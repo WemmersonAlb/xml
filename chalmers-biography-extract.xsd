@@ -1,0 +1,56 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="dictionary">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="entry" maxOccurs="unbounded">
+                    <xs:complexType >
+                        <xs:sequence>
+                            <xs:element name="title">
+                                <xs:complexType mixed="true">
+                                    <xs:sequence>
+                                        <xs:element name="csc" type="xs:string" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="body">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="p" maxOccurs="unbounded">
+                                            <xs:complexType mixed="true">
+                                                <xs:choice minOccurs="1" maxOccurs="unbounded">
+                                                    <xs:element name="csc" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+                                                    <xs:element name="sc" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+                                                    <xs:element name="date" maxOccurs="unbounded" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:gYear">
+                                                                    <xs:attribute name="event" type="xs:string" use="optional"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="q" maxOccurs="unbounded" minOccurs="0">
+                                                        <xs:complexType mixed="true">
+                                                            <xs:sequence>
+                                                                <xs:element name="sc" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="date" type="xs:gYear" use="optional"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:choice>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="birthplace" type="xs:string"/>
+                        <xs:attribute name="id" type="xs:string"/>
+                        <xs:attribute name="born" type="xs:string"/>
+                        <xs:attribute name="died" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
