@@ -58,3 +58,19 @@ return  if ($a/substring($a, 1, 1) eq 'A') then $a/text()
 
 for $p in (//book/price)
 return  if ($p/number(substring($p, 1, 3)) mod 2 = 0) then $p/text()
+
+
+###Desafio: Puxar todos que nasceram antes 1600, ordenar por ordem crescente e exibir os que nasceram em ano par
+
+let $xml :=<results>{
+  for $e in doc("../xml/xml/chalmers-biography-extract.xml")//entry
+  let $born := substring($e/@born, 1, 4)
+  let $nome := $e/title/string-join(csc, " ")
+  
+  order by number($born)
+  where number($born) mod 2 = 0
+  return <data>{
+    if(number(substring($born, 1, 4)) lt 1600) then concat($born, " ",$nome) 
+  }</data> 
+}</results>
+return serialize($xml, map{'indent': 'yes', 'method':'xml'})
