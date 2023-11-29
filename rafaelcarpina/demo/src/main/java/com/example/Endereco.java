@@ -18,7 +18,11 @@ public class Endereco {
     
     public Endereco() {
     }
-    
+    public Endereco(String logradouro, String complemento, String cidade) {
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.localidade = cidade;
+    }
 
 
     public String getCep() {

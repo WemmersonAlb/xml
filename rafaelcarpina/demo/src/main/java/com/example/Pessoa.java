@@ -18,9 +18,10 @@ public class Pessoa {
 
     public Pessoa(){};
     
-    public Pessoa(String nome, int idade) {
+    public Pessoa(String nome, int idade, Endereco end) {
         this.nome = nome;
         this.idade = idade;
+        this.endereco = end;
     }
     public String getNome() {
         return nome;
